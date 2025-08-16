@@ -1,1 +1,163 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Калькулятор ціни шин (б/у)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Калькулятор ціни шин (б/у)</h1>
+        <div class="muted">Вкажіть радіус, висоту протектора та рік виробництва — отримаєте ціну за 1 шину та за комплект.</div>
+      </div>
+      <button class="btn" id="btnCopyLink" title="Скопіювати посилання з параметрами">🔗 Копія з параметрами</button>
+    </header>
+
+    <div class="grid grid-cols">
+      <section class="card">
+        <div class="row">
+          <div>
+            <label for="radius">Радіус (R)</label>
+            <select id="radius">
+              <option>R13</option>
+              <option selected>R14</option>
+              <option>R15</option>
+              <option>R16</option>
+              <option>R17</option>
+              <option>R18</option>
+              <option>R19</option>
+              <option>R20</option>
+              <option>R21</option>
+              <option>R22</option>
+            </select>
+          </div>
+          <div>
+            <label for="tread">Висота протектора (мм)</label>
+            <input id="tread" type="number" step="0.1" min="0" max="12" value="6" />
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="year">Рік виробництва (DOT)</label>
+            <input id="year" type="number" min="2005" max="2099" value="2021" />
+          </div>
+          <div>
+            <label for="rounding">Округлення (грн)</label>
+            <select id="rounding">
+              <option value="1">1</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50" selected>50</option>
+              <option value="100">100</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="qty">Кількість</label>
+            <select id="qty">
+              <option value="1">1 (шт)</option>
+              <option value="2">2 (пара)</option>
+              <option value="4" selected>4 (комплект)</option>
+            </select>
+          </div>
+          <div style="display:flex; align-items:flex-end;">
+            <button class="btn" id="btnCalc" style="width:100%">Розрахувати</button>
+          </div>
+        </div>
+
+        <div style="margin-top: 12px;" class="flex">
+          <span class="pill">Поточний рік: <strong id="curYear"></strong></span>
+          <span class="pill">Мін. ціна: <strong id="minPricePill"></strong></span>
+          <span class="pill">Макс. протектор: 12 мм</span>
+        </div>
+
+        <details style="margin-top:16px;">
+          <summary>⚙️ Налаштування (база та коефіцієнти)</summary>
+          <div class="grid" style="margin-top:12px;">
+            <div>
+              <label>Базова ціна за радіус (грн)</label>
+              <div class="row">
+                <div><label>R13</label><input type="number" id="bR13" value="800"></div>
+                <div><label>R14</label><input type="number" id="bR14" value="1150"></div>
+              </div>
+              <div class="row">
+                <div><label>R15</label><input type="number" id="bR15" value="1350"></div>
+                <div><label>R16</label><input type="number" id="bR16" value="1750"></div>
+              </div>
+              <div class="row">
+                <div><label>R17</label><input type="number" id="bR17" value="2150"></div>
+                <div><label>R18</label><input type="number" id="bR18" value="2600"></div>
+              </div>
+              <div class="row">
+                <div><label>R19</label><input type="number" id="bR19" value="3100"></div>
+                <div><label>R20</label><input type="number" id="bR20" value="3650"></div>
+              </div>
+              <div class="row">
+                <div><label>R21</label><input type="number" id="bR21" value="4200"></div>
+                <div><label>R22</label><input type="number" id="bR22" value="4800"></div>
+              </div>
+            </div>
+            <div>
+              <label>Інше</label>
+              <div class="row">
+                <div><label>Мінімальна ціна (за 1 шт)</label><input type="number" id="minPrice" value="500"></div>
+                <div><label>Макс. націнка за протектор (мм ≥ 8)</label><input type="number" id="treadMaxPct" value="20"></div>
+              </div>
+              <div class="row">
+                <div><label>Зносова шкала (мм → % до бази)</label><input id="treadScale" class="cfg" value="8:20,7:10,6:0,5:-10,4:-25,3:-40"></div>
+                <div><label>Вікова шкала (вік в роках → % до бази)</label><input id="ageScale" class="cfg" value="0-2:15,3-4:5,5-6:0,7-8:-10,9-10:-20,>10:-35"></div>
+              </div>
+              <div class="row">
+                <button class="btn secondary" id="btnReset">Скинути до дефолту</button>
+                <button class="btn" id="btnApply">Застосувати</button>
+              </div>
+              <div class="hint">Пояснення: спершу береться базова ціна за радіус, далі застосовуються відсотки за протектор та за вік. Потім — округлення та перевірка на мінімальну ціну.</div>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <aside class="card">
+        <div class="flex" style="justify-content: space-between;">
+          <div>
+            <div class="badge">Результат / 1 шт</div>
+            <div class="result" id="priceEach">—</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="badge">× <span id="qtyLbl">4</span> шт</div>
+            <div class="result" id="priceTotal">—</div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px">
+          <table>
+            <thead>
+              <tr><th>Етап</th><th>Значення</th></tr>
+            </thead>
+            <tbody id="breakdown">
+              <tr><td>Базова (за радіус)</td><td>—</td></tr>
+              <tr><td>Коеф. протектора</td><td>—</td></tr>
+              <tr><td>Коеф. віку</td><td>—</td></tr>
+              <tr><td>Проміжний підсумок</td><td>—</td></tr>
+              <tr><td>Округлення</td><td>—</td></tr>
+              <tr><td>Мін. ціна (якщо спрацює)</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="hint" style="margin-top:10px">* Якщо протектор &lt; 3 мм — для безпеки ціна не рахується (така шина під списання).</div>
+      </aside>
+    </div>
+
+    <div class="footer">© <span id="yearFooter"></span> SHYNATOP · Зручна логіка та гнучкі коефіцієнти для вашого ринку.</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
