@@ -19,12 +19,12 @@
         <div class="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 space-y-8">
             <h1 class="text-3xl font-bold text-center text-blue-600 dark:text-blue-400">Калькулятор цін на шини</h1>
             
-            <!-- Main Content Area - Single Column Layout -->
+            <!-- Основна область контенту - одноколонковий макет -->
             <div class="space-y-6">
 
-                <!-- Supplier and Diameter Sections -->
+                <!-- Розділи "Постачальник" та "Діаметр" -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <!-- Supplier Section -->
+                    <!-- Розділ "Постачальник" -->
                     <div class="space-y-2">
                         <label for="supplier" class="block text-lg font-medium text-left">Постачальник</label>
                         <select id="supplier" class="w-full p-3 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -33,7 +33,7 @@
                         </select>
                     </div>
 
-                    <!-- Diameter Section -->
+                    <!-- Розділ "Діаметр" -->
                     <div class="space-y-2">
                         <label for="diameter" class="block text-lg font-medium text-left">Діаметр шини</label>
                         <select id="diameter" class="w-full p-3 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -55,7 +55,7 @@
                     </div>
                 </div>
 
-                <!-- Tread Depth Section (Buttons) -->
+                <!-- Розділ "Висота протектора" (Кнопки) -->
                 <div class="space-y-2">
                     <label class="block text-lg font-medium text-left">Залишкова висота протектора</label>
                     <div id="treadDepthButtons" class="flex flex-wrap justify-between gap-2 mt-2">
@@ -98,7 +98,7 @@
                     </div>
                 </div>
 
-                <!-- Tire Year Section -->
+                <!-- Розділ "Рік виготовлення" -->
                 <div class="space-y-2">
                     <label class="block text-lg font-medium text-left">Рік виготовлення</label>
                     <div id="yearButtons" class="flex flex-wrap justify-between gap-2 mt-2">
@@ -128,7 +128,7 @@
                     </div>
                 </div>
 
-                <!-- Seasonality Section -->
+                <!-- Розділ "Сезонність" -->
                 <div class="space-y-2">
                     <label class="block text-lg font-medium text-left">Сезонність</label>
                     <div id="seasonButtons" class="flex flex-wrap justify-between gap-2 mt-2">
@@ -147,19 +147,19 @@
                     </div>
                 </div>
                 
-                <!-- Calculate Button -->
+                <!-- Кнопка "Розрахувати" -->
                 <button id="calculateBtn" class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg shadow-lg hover:bg-blue-700 transition-colors duration-300">
                     Розрахувати ціну
                 </button>
 
-                <!-- Result Display -->
+                <!-- Відображення результату -->
                 <div id="result" class="text-center mt-6 p-4 bg-gray-200 dark:bg-gray-700 rounded-lg font-bold text-2xl hidden">
                     <p>Рекомендована ціна:</p>
                     <p id="priceDisplay" class="text-3xl text-blue-600 dark:text-blue-400 mt-2">0.00 грн</p>
                 </div>
             </div>
 
-            <!-- Collapsible Base Prices Section (Now at the bottom) -->
+            <!-- Згортаний розділ базових цін -->
             <div class="space-y-4">
                 <button id="togglePricesBtn" class="w-full text-left py-3 px-4 rounded-lg bg-gray-200 dark:bg-gray-700 font-bold text-lg flex items-center justify-between">
                     Діапазони базових цін
@@ -173,7 +173,7 @@
                         <div class="space-y-1">
                             <label for="price_14_min" class="block text-sm font-medium">R14 (мін/макс)</label>
                             <div class="flex space-x-2">
-                                <input type="number" id="price_14_min" value="1100" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_14_min" value="800" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 <input type="number" id="price_14_max" value="1400" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                         </div>
@@ -182,108 +182,108 @@
                             <label for="price_14c_min" class="block text-sm font-medium">R14C (мін/макс)</label>
                             <div class="flex space-x-2">
                                 <input type="number" id="price_14c_min" value="1200" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <input type="number" id="price_14c_max" value="2200" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_14c_max" value="1600" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                         </div>
                         <!-- R15 -->
                         <div class="space-y-1">
                             <label for="price_15_min" class="block text-sm font-medium">R15 (мін/макс)</label>
                             <div class="flex space-x-2">
-                                <input type="number" id="price_15_min" value="1300" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <input type="number" id="price_15_max" value="2000" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_15_min" value="1100" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_15_max" value="1900" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                         </div>
                         <!-- R15C -->
                         <div class="space-y-1">
                             <label for="price_15c_min" class="block text-sm font-medium">R15C (мін/макс)</label>
                             <div class="flex space-x-2">
-                                <input type="number" id="price_15c_min" value="1800" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <input type="number" id="price_15c_max" value="2500" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_15c_min" value="1600" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_15c_max" value="2400" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                         </div>
                         <!-- R16 -->
                         <div class="space-y-1">
                             <label for="price_16_min" class="block text-sm font-medium">R16 (мін/макс)</label>
                             <div class="flex space-x-2">
-                                <input type="number" id="price_16_min" value="1500" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <input type="number" id="price_16_max" value="2500" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_16_min" value="1400" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_16_max" value="2300" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                         </div>
                         <!-- R16C -->
                         <div class="space-y-1">
                             <label for="price_16c_min" class="block text-sm font-medium">R16C (мін/макс)</label>
                             <div class="flex space-x-2">
-                                <input type="number" id="price_16c_min" value="2000" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <input type="number" id="price_16c_max" value="3000" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_16c_min" value="1800" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_16c_max" value="2800" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                         </div>
                         <!-- R17 -->
                         <div class="space-y-1">
                             <label for="price_17_min" class="block text-sm font-medium">R17 (мін/макс)</label>
                             <div class="flex space-x-2">
-                                <input type="number" id="price_17_min" value="2000" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <input type="number" id="price_17_max" value="3000" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_17_min" value="1700" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_17_max" value="2400" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                         </div>
                         <!-- R17C -->
                         <div class="space-y-1">
                             <label for="price_17c_min" class="block text-sm font-medium">R17C (мін/макс)</label>
                             <div class="flex space-x-2">
-                                <input type="number" id="price_17c_min" value="1800" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <input type="number" id="price_17c_max" value="3500" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_17c_min" value="1600" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_17c_max" value="2400" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                         </div>
                         <!-- R18 -->
                         <div class="space-y-1">
                             <label for="price_18_min" class="block text-sm font-medium">R18 (мін/макс)</label>
                             <div class="flex space-x-2">
-                                <input type="number" id="price_18_min" value="2300" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <input type="number" id="price_18_max" value="3300" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_18_min" value="1900" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_18_max" value="2900" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                         </div>
                         <!-- R19 -->
                         <div class="space-y-1">
                             <label for="price_19_min" class="block text-sm font-medium">R19 (мін/макс)</label>
                             <div class="flex space-x-2">
-                                <input type="number" id="price_19_min" value="2600" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <input type="number" id="price_19_max" value="3600" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_19_min" value="2200" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_19_max" value="3500" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                         </div>
                         <!-- R20 -->
                         <div class="space-y-1">
                             <label for="price_20_min" class="block text-sm font-medium">R20 (мін/макс)</label>
                             <div class="flex space-x-2">
-                                <input type="number" id="price_20_min" value="3000" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <input type="number" id="price_20_max" value="4000" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_20_min" value="2700" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_20_max" value="3700" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                         </div>
                         <!-- R21 -->
                         <div class="space-y-1">
                             <label for="price_21_min" class="block text-sm font-medium">R21 (мін/макс)</label>
                             <div class="flex space-x-2">
-                                <input type="number" id="price_21_min" value="3500" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <input type="number" id="price_21_max" value="4500" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_21_min" value="3100" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_21_max" value="4100" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                         </div>
                         <!-- R22 -->
                         <div class="space-y-1">
                             <label for="price_22_min" class="block text-sm font-medium">R22 (мін/макс)</label>
                             <div class="flex space-x-2">
-                                <input type="number" id="price_22_min" value="4000" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <input type="number" id="price_22_max" value="5000" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_22_min" value="3600" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_22_max" value="4500" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                         </div>
                         <!-- R23 -->
                         <div class="space-y-1">
                             <label for="price_23_min" class="block text-sm font-medium">R23 (мін/макс)</label>
                             <div class="flex space-x-2">
-                                <input type="number" id="price_23_min" value="4500" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <input type="number" id="price_23_max" value="5500" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_23_min" value="4000" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <input type="number" id="price_23_max" value="6000" min="0" class="w-1/2 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Rounding Section - Moved here as requested -->
+                    <!-- Розділ "Округлення" -->
                     <div class="space-y-2">
                         <label class="block text-lg font-medium text-left">Округлення</label>
                         <div id="roundingButtons" class="flex flex-wrap justify-between gap-2 mt-2">
@@ -312,7 +312,7 @@
         import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Global variables provided by the environment
+        // Глобальні змінні, надані середовищем
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
@@ -323,7 +323,7 @@
         // Ініціалізація Firebase та аутентифікація
         const initFirebase = async () => {
             try {
-                // Check if Firebase is already initialized to prevent errors
+                // Перевіряємо, чи Firebase вже ініціалізовано, щоб уникнути помилок
                 if (!db || !auth) {
                     const app = initializeApp(firebaseConfig);
                     db = getFirestore(app);
@@ -343,7 +343,7 @@
                 modal.textContent = "Не вдалося підключитися до бази даних. Налаштування не будуть зберігатися.";
                 modal.style.cssText = "position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);padding:20px;background-color:#fff;border-radius:10px;box-shadow:0 4px 6px rgba(0,0,0,0.1);z-index:1000;color:#000;";
                 document.body.appendChild(modal);
-                setTimeout(() => modal.remove(), 5000); // Remove after 5 seconds
+                setTimeout(() => modal.remove(), 5000); // Видаляємо через 5 секунд
             }
         };
 
@@ -360,25 +360,25 @@
                     updateUIFromFirestore(settings);
                 } else {
                     console.log("Документ налаштувань ще не існує. Створюємо його.");
-                    // Set default settings if the document doesn't exist
+                    // Встановлюємо налаштування за замовчуванням, якщо документ не існує
                     const defaultSettings = {
                         basePrices: {
-                            price_14_min: "1100", price_14_max: "1400",
-                            price_14c_min: "1200", price_14c_max: "2200",
-                            price_15_min: "1300", price_15_max: "2000",
-                            price_15c_min: "1800", price_15c_max: "2500",
-                            price_16_min: "1500", price_16_max: "2500",
-                            price_16c_min: "2000", price_16c_max: "3000",
-                            price_17_min: "2000", price_17_max: "3000",
-                            price_17c_min: "1800", price_17c_max: "3500",
-                            price_18_min: "2300", price_18_max: "3300",
-                            price_19_min: "2600", price_19_max: "3600",
-                            price_20_min: "3000", price_20_max: "4000",
-                            price_21_min: "3500", price_21_max: "4500",
-                            price_22_min: "4000", price_22_max: "5000",
-                            price_23_min: "4500", price_23_max: "5500"
+                            price_14_min: "800", price_14_max: "1400",
+                            price_14c_min: "1200", price_14c_max: "1600",
+                            price_15_min: "1100", price_15_max: "1900",
+                            price_15c_min: "1600", price_15c_max: "2400",
+                            price_16_min: "1400", price_16_max: "2300",
+                            price_16c_min: "1800", price_16c_max: "2800",
+                            price_17_min: "1700", price_17_max: "2400",
+                            price_17c_min: "1600", price_17c_max: "2400",
+                            price_18_min: "1900", price_18_max: "2900",
+                            price_19_min: "2200", price_19_max: "3500",
+                            price_20_min: "2700", price_20_max: "3700",
+                            price_21_min: "3100", price_21_max: "4100",
+                            price_22_min: "3600", price_22_max: "4500",
+                            price_23_min: "4000", price_23_max: "6000"
                         },
-                        roundingOption: '50' // Default to 50
+                        roundingOption: '50' // За замовчуванням округлення до 50
                     };
                     updateUIFromFirestore(defaultSettings);
                 }
@@ -534,44 +534,56 @@
                     setTimeout(() => modal.remove(), 3000);
                     return;
                 }
-
-                const basePrice = (minPrice + maxPrice) / 2;
-
-                const treadDepthMultipliers = {
-                    '8.0': 1.15, '7.5': 1.10, '7.0': 1.05,
-                    '6.5': 1.0, '6.0': 0.95, '5.5': 0.90,
-                    '5.0': 0.80, '4.5': 0.70, '4.0': 0.60
-                };
-                const supplierMultipliers = {
-                    'GE': 1.0, 
-                    'PL': 1.15
-                };
-                const seasonMultipliers = {
-                    'summer': 1.0,
-                    'winter': 1.10,
-                    'all_season': 0.95
+                
+                // Визначаємо фактори, які будуть масштабувати ціну між minPrice та maxPrice
+                
+                // Вага для кожного фактора (можна змінити для налаштування впливу)
+                const weights = {
+                    tread: 0.4,     // Протектор має найбільший вплив
+                    year: 0.3,      // Рік має значний вплив
+                    supplier: 0.2,  // Постачальник
+                    season: 0.1     // Сезонність
                 };
                 
+                // Фактори висоти протектора (масштабуються від 0 до 1)
+                const treadDepthFactors = {
+                    '4.0': 0.0, '4.5': 0.1, '5.0': 0.2, '5.5': 0.3,
+                    '6.0': 0.4, '6.5': 0.5, '7.0': 0.6, '7.5': 0.8,
+                    '8.0': 1.0
+                };
+                
+                // Фактори року (масштабуються від 0 до 1, лінійно)
+                const minYear = 2018;
+                const maxYear = 2024; // Максимальне значення, як зазначено у вимозі
                 const selectedYear = parseInt(document.querySelector('input[name="year"]:checked').value);
-                const currentYear = new Date().getFullYear();
-                const age = currentYear - selectedYear;
-                let yearFactor = 1.0;
-                if (age > 0) {
-                    yearFactor = 1.0 - (age * 0.02); 
-                    if (yearFactor < 0.5) yearFactor = 0.5;
-                }
-
+                const yearFactor = (selectedYear - minYear) / (maxYear - minYear);
+                const clampedYearFactor = Math.max(0, Math.min(1, yearFactor)); // Обмежуємо від 0 до 1
+                
+                // Фактори постачальника (0 для найдешевшого, 1 для найдорожчого)
+                const supplierFactors = { 'GE': 0.0, 'PL': 1.0 };
+                
+                // Фактори сезонності (0 для найдешевшого, 1 для найдорожчого)
+                const seasonFactors = { 'all_season': 0.0, 'summer': 0.5, 'winter': 1.0 };
+                
                 const selectedTreadDepth = document.querySelector('input[name="treadDepth"]:checked').value;
                 const selectedSupplier = supplierSelect.value;
                 const selectedSeason = document.querySelector('input[name="season"]:checked').value;
                 const roundingOption = document.querySelector('input[name="rounding_option"]:checked').value;
 
-                const treadDepthFactor = treadDepthMultipliers[selectedTreadDepth] || 1.0;
-                const supplierFactor = supplierMultipliers[selectedSupplier] || 1.0;
-                const seasonFactor = seasonMultipliers[selectedSeason] || 1.0;
+                // Розраховуємо загальний фактор преміальності, зважений за вагами
+                let totalFactor = 
+                    (weights.tread * treadDepthFactors[selectedTreadDepth]) + 
+                    (weights.year * clampedYearFactor) + 
+                    (weights.supplier * supplierFactors[selectedSupplier]) +
+                    (weights.season * seasonFactors[selectedSeason]);
                 
-                let calculatedPrice = (basePrice * supplierFactor * treadDepthFactor * yearFactor * seasonFactor);
+                // Загальний коефіцієнт (від 0 до 1), який буде застосовано до діапазону цін
+                const totalWeight = weights.tread + weights.year + weights.supplier + weights.season;
+                const normalizedFactor = totalFactor / totalWeight;
 
+                // Розраховуємо ціну, використовуючи діапазон як границі
+                let calculatedPrice = minPrice + normalizedFactor * (maxPrice - minPrice);
+                
                 let finalPrice;
                 if (roundingOption === '25') {
                     finalPrice = Math.round(calculatedPrice / 25) * 25;
@@ -595,5 +607,3 @@
     </script>
 </body>
 </html>
-
-
